@@ -1,0 +1,132 @@
+:root {
+  --bg: #0b2f33;
+  --painel: #11474d;
+  --painel-2: #0e3b40;
+  --texto: #d7fbff;
+  --suave: #8fc9cf;
+  --borda: #1d6a72;
+  --acento: #3ee0d0;
+  --acento-texto: #052629;
+  --erro: #ff8f8f;
+  --ok: #7be495;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-tema="escuro"]) {
+    --bg: #e9f6f7; --painel: #ffffff; --painel-2: #f1fafb; --texto: #0c2c30; --suave: #4a7479;
+    --borda: #b6d9dc; --acento: #0a7f87; --acento-texto: #ffffff; --erro: #b3261e; --ok: #1b7a3a;
+    color-scheme: light;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg); color: var(--texto);
+  font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+.topo {
+  display: flex; flex-wrap: wrap; gap: .75rem 2rem; align-items: center; justify-content: space-between;
+  padding: .6rem 1.25rem; background: var(--painel-2); border-bottom: 1px solid var(--borda);
+}
+.marca { display: flex; flex-direction: column; line-height: 1.2; }
+.marca small { color: var(--suave); }
+nav { display: flex; gap: .25rem; flex-wrap: wrap; }
+nav a {
+  color: var(--texto); text-decoration: none; padding: .45rem .8rem; border-radius: 8px; border: 1px solid transparent;
+}
+nav a:hover { border-color: var(--borda); }
+nav a[aria-current="page"] { background: var(--acento); color: var(--acento-texto); font-weight: 600; }
+.app { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 1.25rem; outline: none; }
+.rodape { text-align: center; padding: .75rem; color: var(--suave); }
+
+h1 { font-size: 1.25rem; margin: 0 0 1rem; letter-spacing: .08em; text-transform: uppercase; }
+h2 { font-size: 1.1rem; margin: 0 0 .75rem; }
+
+.card { background: var(--painel); border: 1px solid var(--borda); border-radius: 12px; padding: 1rem; }
+.grid-pdv { display: grid; grid-template-columns: 1fr 340px; gap: 1rem; }
+@media (max-width: 860px) { .grid-pdv { grid-template-columns: 1fr; } }
+
+label { display: block; color: var(--suave); font-size: .85rem; margin-bottom: .6rem; }
+input, select {
+  width: 100%; margin-top: .2rem; padding: .6rem .7rem; font: inherit; color: var(--texto);
+  background: var(--painel-2); border: 1px solid var(--borda); border-radius: 8px;
+}
+input:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 3px solid var(--acento); outline-offset: 1px;
+}
+input[readonly] { opacity: .85; }
+.linha2 { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+
+button {
+  font: inherit; cursor: pointer; padding: .6rem 1rem; border-radius: 8px;
+  border: 1px solid var(--borda); background: var(--painel-2); color: var(--texto);
+}
+button:hover:not(:disabled) { border-color: var(--acento); }
+button:disabled { opacity: .45; cursor: not-allowed; }
+button.pri { background: var(--acento); color: var(--acento-texto); border-color: var(--acento); font-weight: 600; }
+button.perigo { color: var(--erro); }
+button.mini { padding: .25rem .6rem; font-size: .85rem; }
+.acoes { display: flex; gap: .6rem; justify-content: flex-end; margin-top: 1rem; flex-wrap: wrap; }
+
+.msg { min-height: 1.4em; margin: .25rem 0 0; }
+.erro { color: var(--erro); min-height: 1.4em; margin: .4rem 0 0; }
+.ok { color: var(--ok); }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: .45rem .5rem; text-align: left; border-bottom: 1px solid var(--borda); }
+th { color: var(--suave); font-weight: 500; font-size: .85rem; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.tabela-rolavel { overflow-x: auto; }
+
+.total-grande { text-align: right; }
+.total-grande small { display: block; color: var(--suave); text-transform: uppercase; letter-spacing: .08em; }
+.total-grande strong { font-size: 2.6rem; font-variant-numeric: tabular-nums; color: var(--acento); }
+.dica { color: var(--suave); font-size: .85rem; }
+
+.barra { display: flex; gap: .75rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap; }
+.barra input { max-width: 340px; margin: 0; }
+.barra .espaco { flex: 1; }
+
+dialog {
+  background: var(--painel); color: var(--texto); border: 1px solid var(--acento); border-radius: 14px;
+  padding: 1.25rem; width: min(520px, 94vw);
+}
+dialog::backdrop { background: rgba(0, 0, 0, .6); }
+dl.totais { margin: 0 0 1rem; }
+dl.totais div { display: flex; justify-content: space-between; padding: .2rem 0; }
+dl.totais dt { color: var(--suave); }
+dl.totais dd { margin: 0; font-variant-numeric: tabular-nums; }
+dl.totais dd.destaque { font-size: 1.6rem; color: var(--acento); }
+.formas { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin: .75rem 0; }
+.lista-pag { list-style: none; padding: 0; margin: 0; }
+.lista-pag li { display: flex; justify-content: space-between; align-items: center; padding: .3rem 0; border-bottom: 1px dashed var(--borda); }
+
+.cupom {
+  margin: 0; padding: .75rem; background: #fff; color: #000; border-radius: 6px; overflow-x: auto;
+  font: 13px/1.3 "Courier New", Courier, monospace; white-space: pre;
+}
+.cupom .dupla { font-weight: 700; font-size: 1.15em; line-height: 1.7; display: block; }
+.cupom .l { display: block; }
+
+/* ---- impressão ---- */
+@page { size: 80mm auto; margin: 2mm; }
+@media print {
+  body { background: #fff; color: #000; display: block; }
+  .topo, .rodape, .app, dialog:not(#dlgCupom) { display: none !important; }
+  dialog#dlgCupom[open] { position: static; display: block; border: 0; padding: 0; width: auto; background: #fff; }
+  dialog#dlgCupom::backdrop { display: none; }
+  dialog#dlgCupom .acoes { display: none; }
+  .cupom { font-size: 2.5mm; padding: 0; overflow: visible; }
+  /* impressão da lista de produtos */
+  body.imprime-lista .topo, body.imprime-lista .rodape, body.imprime-lista .barra,
+  body.imprime-lista .col-acoes, body.imprime-lista dialog { display: none !important; }
+  body.imprime-lista .app { display: block !important; max-width: none; padding: 0; }
+  body.imprime-lista .card { border: 0; background: #fff; color: #000; }
+  body.imprime-lista th, body.imprime-lista td { color: #000; border-color: #999; }
+  body.imprime-lista { font-size: 11pt; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  button, nav a, input { transition: border-color .12s, background-color .12s; }
+}
+td.col-acoes { white-space: nowrap; }

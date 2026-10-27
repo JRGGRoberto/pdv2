@@ -1,0 +1,2 @@
+# Se o servidor aponta para a raiz do projeto, bloqueia tudo.
+Require all denied
